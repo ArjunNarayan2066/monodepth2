@@ -11,7 +11,10 @@ import torch
 import torch.nn as nn
 
 from collections import OrderedDict
-from ..layers import *
+try:
+    from ..layers import *
+except ValueError:
+    from layers import *
 
 
 class DepthDecoder(nn.Module):

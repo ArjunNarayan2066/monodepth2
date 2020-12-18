@@ -46,6 +46,7 @@ def parse_args():
     parser.add_argument("--no_cuda",
                         help='if set, disables CUDA',
                         action='store_true')
+    parser.add_argument("--model_path", type=str, default=None)
 
     return parser.parse_args()
 
@@ -61,8 +62,11 @@ def test_simple(args):
     else:
         device = torch.device("cpu")
 
-    download_model_if_doesnt_exist(args.model_name)
-    model_path = os.path.join("models", args.model_name)
+    if args.model_path:
+        model_path = args.model_path
+    else:
+        download_model_if_doesnt_exist(args.model_name)
+        model_path = os.path.join("models", args.model_name)
     print("-> Loading model from ", model_path)
     encoder_path = os.path.join(model_path, "encoder.pth")
     depth_decoder_path = os.path.join(model_path, "depth.pth")
