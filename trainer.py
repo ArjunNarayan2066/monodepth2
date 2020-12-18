@@ -17,12 +17,12 @@ from tensorboardX import SummaryWriter
 
 import json
 
-from utils import *
-from kitti_utils import *
-from layers import *
+from .utils import *
+from .kitti_utils import *
+from .layers import *
 
-import datasets
-import networks
+import monodepth2.datasets
+import monodepth2.networks
 from IPython import embed
 
 
